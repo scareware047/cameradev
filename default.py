@@ -31,7 +31,7 @@ if __name__ == "__main__":
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
-print("Total Frames: {}".format(fps))
-print("Time Taken: {:.2f}".format(time.time()-start))
-cap.release()
-cv2.destroyAllWindows()
+    print("Total Frames: {}".format(fps))
+    print("Time Taken: {:.2f}".format(time.time()-start))
+    cap.release()
+    cv2.destroyAllWindows()
