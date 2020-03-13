@@ -33,5 +33,6 @@ if __name__ == "__main__":
 
     print("Total Frames: {}".format(fps))
     print("Time Taken: {:.2f}".format(time.time()-start))
+    print("FPS: {}".format(round(fps/curr_time)))
     cap.release()
     cv2.destroyAllWindows()
