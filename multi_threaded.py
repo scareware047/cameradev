@@ -26,8 +26,11 @@ class AsyncVideoCapture:
             src: Input source.
         """
 
+        # Load video capture from src.
         self.cap = cv2.VideoCapture(src)
+        # Set current state to not running.
         self.running = False
+        # Queue to store frames. Max size 256 frames.
         self.Q = Queue(256)
 
     def __exit__(self, exec_type, exc_value, traceback):
@@ -35,18 +38,23 @@ class AsyncVideoCapture:
         Release capture object on exit.
         """
 
+        # Release video capture object.
         self.cap.release()
 
     def start(self):
         """
         Start streaming from camera.
-        Create thread to read and push frames to queue.
         """
 
+        # If already running don't start.
         if self.running:
+            print("Already running!")
             return None
+        # Set running to true.
         self.running = True
+        # Create thread to push frames to queue.
         self.thread = threading.Thread(target=self.update, args=())
+        # Set thread to daemon thread.
         self.thread.daemon = True
         self.thread.start()
         return self
@@ -54,13 +62,14 @@ class AsyncVideoCapture:
     def update(self):
         """
         Push frames to queue every read.
-        If queue is full, put thread to sleep.
         """
 
         while self.running:
+            # If Q not full read frame.
             if not self.Q.full():
                 grabbed, frame = self.cap.read()
                 self.Q.put([grabbed, frame])
+            # Else put thread to sleep.
             else:
                 time.sleep(0.1)
 
