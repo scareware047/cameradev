@@ -20,7 +20,10 @@ if __name__ == "__main__":
     start = time.time()
 
     while True:
-        _, frame = cap.read()
+        grabbed, frame = cap.read()
+
+        if grabbed is False:
+            break
 
         curr_time = time.time() - start
         frame = cv2.resize(frame, (720, 480))
