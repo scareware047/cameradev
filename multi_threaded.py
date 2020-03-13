@@ -121,7 +121,7 @@ if __name__ == "__main__":
         cv2.putText(frame, 'FPS: {}'.format(fps),
                     (230, 50), font, 0.8, (0, 255, 0), 2, cv2.LINE_AA)
         cv2.imshow("Multi-Threaded", frame)
-        # Display frame for 1 ms and break if uses presses 'q'.
+        # Display frame for 1 ms and break if user presses 'q'.
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
         # Run for 60 seconds if benchmark.
