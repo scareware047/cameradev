@@ -49,6 +49,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--src", default=0)
+    parser.add_argument("--benchmark", action='store_true')
     args = parser.parse_args()
 
     cap = AsyncVideoCapture(args.src)
@@ -68,6 +69,9 @@ if __name__ == "__main__":
         fps += 1
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+        if args.benchmark and curr_time > 60:
             break
 
     print("Total Frames: {}".format(fps))
