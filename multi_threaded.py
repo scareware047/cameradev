@@ -28,6 +28,8 @@ class AsyncVideoCapture:
 
         # Load video capture from src.
         self.cap = cv2.VideoCapture(src)
+        # Assert src is running!
+        assert self.cap.isOpened(), "Can't run {}!".format(src)
         # Set current state to not running.
         self.running = True
         # Queue to store frames.
