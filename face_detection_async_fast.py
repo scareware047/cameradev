@@ -1,5 +1,5 @@
 """
-Face detection using Openvino using aync camera.
+Face detection using Openvino using async camera fast.
 
 TODO: Only camera is async. Not openvino.
 
@@ -10,7 +10,7 @@ import numpy as np
 import cv2
 import time
 from openvino.inference_engine import IENetwork, IECore
-from multi_threaded import AsyncVideoCapture
+from multi_threaded_fast import AsyncVideoCapture
 import argparse
 
 
