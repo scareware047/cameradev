@@ -1,6 +1,6 @@
 """
 Script to run and display video stream using OpenCV.
-Asynchronus implementation using queues.
+Parallel implementation using multiprocessing.
 
 Author: Tejas Pandey
 """
